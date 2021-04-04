@@ -63,6 +63,16 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 manage jenkins-->manage plugins-->可选插件-->Maven Integration
 # 调整maven，在具体构建项目实例里配置
 build-->高级，填写settings.xml路径
+
+jenkins添加到root
+gpasswd -a jenkins root
+修改配置文件/etc/sysconfig/jenkins
+JENKINS_USER=root
+JENKINS_GROUP=root
+
+修改仓库目录权限组为jenkins，不然下包时会报错
+sudo chown -R jenkins:jenkins /opt/apache-maven-3.6.3/repository
+
 ```
 
 ```shell script
