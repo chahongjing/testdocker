@@ -36,8 +36,36 @@ docker logs -f --tail=100 ca     # ca是containerid
 https://blog.csdn.net/duangecho/article/details/80315316
 ```
 
-### jenkins
+### 安装jenkins
 ``` shell
+# 我们将存储库密钥添加到系统，添加密钥后，系统将返回OK
+wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+# 将Debian包存储库地址附加到服务器的sources.list
+echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+# 更新软件库
+sudo apt-get update
+# 安装jenkins，如果提示--allow-unauthenticated，则把此项添加到-y 后面，注意要添加空格，如果报错，看是不是java没有配置软链接到/usr/bin中
+sudo apt-get install -y jenkins
+# 报错，其中/opt/jdk1.8.0_231/bin/java是我本地java执行文件目录，或者检查8080端口是否被占用
+sudo ln -s /opt/jdk1.8.0_231/bin/java /usr/bin/java
+```
+
+### 启动jenkins
+```shell script
+# 启动服务
+service jenkins restart
+# 配置jenkins
+cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
+### maven插件设置
+```shell script
+manage jenkins-->manage plugins-->可选插件-->Maven Integration
+# 调整maven，在具体构建项目实例里配置
+build-->高级，填写settings.xml路径
+```
+
+```shell script
 #!/bin/bash 
 
 #export BUILD_ID=dontKillMe这一句很重要，这样指定了，项目启动之后才不会被Jenkins杀掉。
