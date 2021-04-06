@@ -1,5 +1,6 @@
 FROM java:8
 VOLUME /tmp
-ADD testdocker-0.0.1-SNAPSHOT.jar myapp.jar
+ARG JAR_FILE
+ADD target/${JAR_FILE} myapp.jar
 EXPOSE 8081
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/myapp.jar"]

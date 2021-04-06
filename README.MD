@@ -16,7 +16,7 @@ sudo chmod 777 /var/run/docker.sock
 ### 运行docker
 ```shell script
 # 运行镜像，8080是容器内容端口号，12345是容器对外端口号，通过 http://localhost:12345/index 访问
-docker run --name=myspringbootapp -d -p 12345:8080 myapp:latest
+docker run --name=myspringbootapp -d -p 12345:8081 myapp:latest
 # 查看容器运行实例id
 docker ps -a
 # 停止运行实例，参数为容器id
@@ -26,6 +26,10 @@ docker rmi -f myapp:latest
 # 删除整个镜像实例，容器等
 docker rm d8b5d84df51a
 ```
+
+### docker hub
+docker pull registry
+[docker hub](https://www.cnblogs.com/edisonchou/p/docker_registry_repository_setup_introduction.html)
 
 ### 其它
 ```shell script

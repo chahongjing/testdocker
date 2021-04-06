@@ -50,48 +50,48 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <configuration>
-                    <!--                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>-->
-                    <imageName>${docker.images.name}</imageName>
-<!--                    <imageTags>${docker.images.tag}</imageTags>-->
-<!--                    <forceTags>true</forceTags>-->
-                    <dockerDirectory>src/main/docker</dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.jar</include>
-                        </resource>
-                    </resources>
-                </configuration>
-            </plugin>
-
 <!--            <plugin>-->
 <!--                <groupId>com.spotify</groupId>-->
-<!--                <artifactId>dockerfile-maven-plugin</artifactId>-->
-<!--                <version>1.4.0</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>default</id>-->
-<!--                        <goals>-->
-<!--                            <goal>build</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
+<!--                <artifactId>docker-maven-plugin</artifactId>-->
+<!--                <version>1.0.0</version>-->
 <!--                <configuration>-->
-<!--&lt;!&ndash;                    <dockerInfoDirectory>src/main/docker</dockerInfoDirectory>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <dockerConfigFile>src/main/docker</dockerConfigFile>&ndash;&gt;-->
-<!--                    <repository>com.zjy/${project.artifactId}</repository>-->
-<!--                    <tag>${project.version}</tag>-->
-<!--                    <buildArgs>-->
-<!--                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>-->
-<!--                    </buildArgs>-->
+<!--                    &lt;!&ndash;                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>&ndash;&gt;-->
+<!--                    <imageName>${docker.images.name}</imageName>-->
+<!--&lt;!&ndash;                    <imageTags>${docker.images.tag}</imageTags>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <forceTags>true</forceTags>&ndash;&gt;-->
+<!--                    <dockerDirectory>src/main/docker</dockerDirectory>-->
+<!--                    <resources>-->
+<!--                        <resource>-->
+<!--                            <targetPath>/</targetPath>-->
+<!--                            <directory>${project.build.directory}</directory>-->
+<!--                            <include>${project.build.finalName}.jar</include>-->
+<!--                        </resource>-->
+<!--                    </resources>-->
 <!--                </configuration>-->
 <!--            </plugin>-->
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+<!--                    <dockerInfoDirectory>src/main/docker</dockerInfoDirectory>-->
+<!--                    <dockerConfigFile>src/main/docker</dockerConfigFile>-->
+                    <repository>chahongjing/${project.artifactId}</repository>
+                    <tag>1.0</tag>
+                    <buildArgs>
+                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
