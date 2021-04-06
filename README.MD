@@ -7,6 +7,7 @@ sudo apt install docker.io
 ```shell script
 # idea mvn
 mvn clean package docker:build
+mvn clean package dockerfile:build
 # 或直接通过命令构建镜像，进入到docker文件目录（springboot的jar包也在此目录），latest是tag号，也可以是1.0等
 docker build -t myapp:latest .
 # 如果提示没有权限，需要修改docker的权限
