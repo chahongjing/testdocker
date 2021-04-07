@@ -1,6 +1,12 @@
 ### 安装docker
 ``` shell script
 sudo apt install docker.io
+# 启动服务
+sudo service docker start
+# 重启服务
+sudo service docker restart
+# 关闭服务
+sudo service docker stop
 ```
 
 ### 生成镜像
