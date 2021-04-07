@@ -12,6 +12,6 @@ public class TestController {
     @GetMapping("/index")
     public Object index() {
         log.info("现在访问服务的index请求了！");
-        return "准备就绪！";
+        return "准备就绪1！";
     }
 }
