@@ -28,9 +28,9 @@ sudo chmod 777 /var/run/docker.sock
 docker pull registry
 # 登录，输入用户名和密码
 docker login
-# 上传镜像到hub.docker.com服务器
+# 上传镜像到hub.docker.com服务器，docker push 192.168.0.0.1:5000/chahongjing:testdocker:1.0
 docker push chahongjing/testdocker:1.0
-# 从服务器上获取镜像
+# 从服务器上获取镜像，docker pull 192.168.0.0.1:5000/chahongjing:testdocker:1.0
 docker pull chahongjing/testdocker:1.0
 ```
 
