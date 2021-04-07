@@ -24,6 +24,8 @@ sudo chmod 777 /var/run/docker.sock
 
 ### 上传，下载镜像到docker服务器[hub.docker.com](https://hub.docker.com)
 ```shell script
+# 搜索镜像
+docker search registry
 # 添加registry镜像，只用配置一次
 docker pull registry
 # 登录，输入用户名和密码
@@ -53,8 +55,6 @@ docker rm d8b5d84df51a
 -- 控制台查看日志
 docker logs -f --tail=100 ca     # ca是containerid
 -- 查看日志文件先要进到容器内部
-
-https://blog.csdn.net/duangecho/article/details/80315316
 ```
 
 ### 服务器
