@@ -48,6 +48,8 @@ docker stop d8b5d84df51a
 docker rmi -f myapp:latest
 # 删除整个镜像实例，容器等
 docker rm d8b5d84df51a
+# 清理为none的镜像
+docker rmi $(docker images | grep "none" | awk '{print $3}')
 ```
 
 ### 其它
