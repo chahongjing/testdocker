@@ -39,7 +39,7 @@ docker pull chahongjing/testdocker:1.0
 ### 运行docker
 ```shell script
 # 运行镜像，8081是容器内容端口号，12345是容器对外端口号，通过 http://localhost:12345/index 访问
-docker run --name=myspringbootapp -d -p 12345:8081 myapp:latest
+docker run --name=myspringbootapp -d -p 12345:8081 chahongjing/testdocker:1.0
 # 查看容器运行实例id
 docker ps -a
 # 停止运行实例，参数为容器id
