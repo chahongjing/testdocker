@@ -50,10 +50,14 @@ docker rmi -f myapp:latest
 docker rm d8b5d84df51a
 # 清理为none的镜像
 docker rmi $(docker images | grep "none" | awk '{print $3}')
+# 重启docker实例
+docker restart d8b5d84df51a
 ```
 
 ### 其它
 ```shell script
+# 进入容器
+docker exec -it 容器名/ID bash //进入容器
 -- 控制台查看日志
 docker logs -f --tail=100 ca     # ca是containerid
 -- 查看日志文件先要进到容器内部
@@ -62,3 +66,17 @@ docker logs -f --tail=100 ca     # ca是containerid
 ### 服务器
 [dockerhub](https://hub.docker.com/) <br>
 [vultr](https://my.vultr.com)
+
+# springmvc
+### 三种方式
+1. 直接将war复制到tomcat镜像内部：docker cp d_web.war 容器Id:/usr/local/tomcat/webapps
+2. 使用war包外挂的方式：docker run -p 8081:8080 --name springmvc-maven-web-volume -v /opt/projects/springmvc-maven.war:/usr/local/tomcat/webapps/springmvc-maven.war -d tomcat
+3. 使用dockfile
+```shell script
+FROM tomcat #基础镜像
+MAINTAINER "zhoubang <842324724@qq.com>"  # 作者
+ENV DIR_WEBAPP /usr/local/tomcat/webapps/ # 定义变量，后续会使用；该路径是tomcat容器中的webapps默认的路径
+ADD springmvc-maven.war $DIR_WEBAPP/springmvc-maven.war # 将war添加到tomcat容器中的webapps目录下
+RUN unzip $DIR_WEBAPP/springmvc-maven.war -d $DIR_WEBAPP # 解压war到DIR_WEBAPP参数对应的目录下
+CMD ["catalina.sh", "run"] # 执行启动脚本，运行tomcat
+```
