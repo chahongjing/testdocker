@@ -25,15 +25,24 @@ sudo chmod 777 /var/run/docker.sock
 #### 三种方式
 1. 直接将war复制到tomcat镜像内部：docker cp ToolSiteMvc4J.war 容器Id:/usr/local/tomcat/webapps
 2. 使用war包外挂的方式：docker run -p 8081:8080 --name springmvc-docker-volume -v /opt/projects/ToolSiteMvc4J.war:/usr/local/tomcat/webapps/ToolSiteMvc4J.war -d tomcat
-3. 使用dockfile
+3. 使用dockfile，注意，使用时需要把所有注释全部去掉
 ```shell script
-FROM tomcat #基础镜像
+# 创建docker file
+## 基础镜像
+FROM tomcat
 MAINTAINER "zjy <310510906@qq.com>"
 ENV DIR_WEBAPP /usr/local/tomcat/webapps/
-ADD ToolSiteMvc4J.war $DIR_WEBAPP/ToolSiteMvc4J.war # 将war添加到tomcat容器中的webapps目录下
-# RUN unzip $DIR_WEBAPP/ToolSiteMvc4J.war -d $DIR_WEBAPP # 解压war到DIR_WEBAPP参数对应的目录下
+## 将war添加到tomcat容器中的webapps目录下
+ADD ToolSiteMvc4J.war $DIR_WEBAPP/ToolSiteMvc4J.war
+## RUN unzip $DIR_WEBAPP/ToolSiteMvc4J.war -d $DIR_WEBAPP # 解压war到DIR_WEBAPP参数对应的目录下
 CMD ["catalina.sh", "run"]
+
+# 构建镜像
+docker build -t springmvctest:latest .
+# 运行docker
+docker run --name=myspringmvcapp -d -p 12346:8080 springmvctest
 ```
+
 
 [springmvc docker部署](https://www.yuque.com/zhoubang/docker/docker-deploy-springmvc-maven)
 
