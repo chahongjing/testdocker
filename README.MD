@@ -36,7 +36,9 @@ ENV DIR_WEBAPP /usr/local/tomcat/webapps/
 ADD ToolSiteMvc4J.war $DIR_WEBAPP/ToolSiteMvc4J.war
 ## RUN unzip $DIR_WEBAPP/ToolSiteMvc4J.war -d $DIR_WEBAPP # 解压war到DIR_WEBAPP参数对应的目录下
 CMD ["catalina.sh", "run"]
-
+```
+- 3.1 构建 
+``` shell
 # 构建镜像
 docker build -t springmvctest:latest .
 # 运行docker
