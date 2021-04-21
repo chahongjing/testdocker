@@ -93,3 +93,11 @@ docker logs -f --tail=100 ca     # ca是containerid
 ### 服务器
 [dockerhub](https://hub.docker.com/) <br>
 [vultr](https://my.vultr.com)
+
+### docker ui
+```shell script
+docker search portainer
+docker pull portainer/portainer
+docker volume create portainer_data
+docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+```
