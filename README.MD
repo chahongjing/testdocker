@@ -78,6 +78,36 @@ docker rm d8b5d84df51a
 docker rmi $(docker images | grep "none" | awk '{print $3}')
 # 重启docker实例
 docker restart d8b5d84df51a
+
+docker images -aq
+```
+
+``` shell script
+docker commit -a="作者" -m="备注" 容器id newname:[tag]
+匿名挂载-v /容器目录；具名挂载-v vname:/容器目录；指定目录挂载：-v /宿主机目录:/容器目录
+docker volume inspect 卷名
+docker inspect 镜像名称或Id
+
+docker network insptect 容器名
+CMD：定容器启动时要执行的命令，只有最后一个会生效，可被替代
+ENTRYPOINT：指定容器启动时要执行的命令,可以追加命令
+
+MAINTAINER zjy<310@qq.com>
+ENV MY_PATH /home/work/mydir
+RUN mkdir $MY_PATH
+RUN yum install vim
+WORKDIR $MY_PATH
+COPY /mydir $MY_PATH
+ADD jdk.tar.gz /usr/local/
+ENV JAVA_HOME /usr/local/jdk
+
+
+docker run --link 要连通的容器名。link其实是在hosts中添加了网络映射，是单向的
+docker network create -d bridge --subnet 192.168.0.0/16 mynet
+docker network connect mynet 容器名
+docker run --net=mynet
+数据卷容器
+docker run --volumes-from 被共享的容器名
 ```
 
 ### 其它
@@ -106,3 +136,7 @@ docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.
 [genDoc](https://github.com.cnpmjs.org/easycodingnow/genDoc)
 
 [k8s](http://www.dockone.io/article/932)
+
+
+1. docker compose
+2. docker swarm
