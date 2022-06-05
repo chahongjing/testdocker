@@ -66,14 +66,17 @@ docker pull chahongjing/testdocker:1.0
 ```shell script
 # 运行镜像，8081是容器内容端口号，12345是容器对外端口号，通过 http://localhost:12345/index 访问
 docker run --name=myspringbootapp -d -p 12345:8081 chahongjing/testdocker:1.0
+docker run -it mvc /bin/bash
+
 # 查看容器运行实例id
 docker ps -a
 # 停止运行实例，参数为容器id
 docker stop d8b5d84df51a
-# 删除镜像文件
-docker rmi -f myapp:latest
 # 删除整个镜像实例，容器等
 docker rm d8b5d84df51a
+# 删除镜像文件
+docker rmi -f myapp:latest
+
 # 清理为none的镜像
 docker rmi $(docker images | grep "none" | awk '{print $3}')
 # 重启docker实例
