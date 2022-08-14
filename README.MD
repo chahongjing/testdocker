@@ -18,6 +18,7 @@ mvn clean package docker:build
 mvn clean package dockerfile:build
 # 2.或直接通过命令构建镜像，进入到docker文件目录（springboot的jar包也在此目录），latest是tag号，也可以是1.0等
 docker build -t myapp:latest .
+# 如果使用ARG命令，可以在构建参数添加 --build-arg JAR_FILE=myapp.jar
 # 如果提示没有权限，需要修改docker的权限
 sudo chmod 777 /var/run/docker.sock
 ```
@@ -57,6 +58,8 @@ docker pull registry
 # 登录，输入用户名和密码
 docker login
 # 上传镜像到hub.docker.com服务器，docker push 192.168.0.0.1:5000/chahongjing:testdocker:1.0
+docker tag myapp chahongjing/myapp
+docker push chahongjing/myapp
 docker push chahongjing/testdocker:1.0
 # 从服务器上获取镜像，docker pull 192.168.0.0.1:5000/chahongjing:testdocker:1.0
 docker pull chahongjing/testdocker:1.0
