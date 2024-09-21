@@ -4,10 +4,15 @@ on: [push]
 
 jobs:
   build:
+
     runs-on: macos-latest
-    container:
-      image: cimg/python:3.10
+#    container:
+#      image: cimg/python:3.10
     steps:
+      - name: docker
+        uses: douglascamata/setup-docker-macos-action@v1-alpha
+      - name: t
+        run: docker --version
       - name: Checkout code
         uses: actions/checkout@v2
 
