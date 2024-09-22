@@ -10,7 +10,7 @@ jobs:
 #      image: cimg/python:3.10
     steps:
       - name: docker
-        uses: douglascamata/setup-docker-macos-action@v1-alpha
+        uses: huaweicloud/swr-multiplatform-build-action@v1.2.1
       - name: t
         run: docker --version
       - name: Checkout code
