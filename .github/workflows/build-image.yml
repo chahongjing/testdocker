@@ -1,26 +1,26 @@
-name: Build on macOS
-
-on: [push]
-
-jobs:
-  build:
-
-    runs-on: macos-latest
-#    container:
-#      image: cimg/python:3.10
-    steps:
-      - name: docker
-        uses: huaweicloud/swr-multiplatform-build-action@v1.2.1
-      - name: t
-        run: docker --version
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install Dependencies
-        run: python -m pip install --upgrade pip && pip install flake8 pytest
-
-      - name: Lint Code
-        run: flake8 .
-
-      - name: Test Code
-        run: pytest
+#name: Build on macOS
+#
+#on: [push]
+#
+#jobs:
+#  build:
+#
+#    runs-on: macos-latest
+##    container:
+##      image: cimg/python:3.10
+#    steps:
+#      - name: docker
+#        uses: huaweicloud/swr-multiplatform-build-action@v1.2.1
+#      - name: t
+#        run: docker --version
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#
+#      - name: Install Dependencies
+#        run: python -m pip install --upgrade pip && pip install flake8 pytest
+#
+#      - name: Lint Code
+#        run: flake8 .
+#
+#      - name: Test Code
+#        run: pytest
