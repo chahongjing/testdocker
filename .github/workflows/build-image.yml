@@ -20,3 +20,5 @@ jobs:
 
       - name: Test Code
         run: pytest
+      - name: a
+        run: docker --version
