@@ -7,4 +7,4 @@ COPY ./* ./
 
 #RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python3", "-u", "python.py"]
+ENTRYPOINT ["python", "-u", "python.py"]
